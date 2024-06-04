@@ -12,8 +12,16 @@ def printall():
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly
-    print(results)
+    for result in results:
+        print(result)
     db.close()
-printall()
 
-# apparently there is no table "Languages" so I will need to do some trouble-shooting
+while True:
+    print("")
+    user_input = input("What would you like to do?\n1. print all languages in order of people who speak it\n2. close the program")
+    if user_input == "1":
+        printall()
+    elif user_input == "2":
+        break
+    else:
+        print("Please input a number")
