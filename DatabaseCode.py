@@ -3,7 +3,7 @@
 import sqlite3
 
 # variables
-DATABASE = "Languagess.db"
+DATABASE = "Languages.db"
 
 def printall():
     db = sqlite3.connect(DATABASE)
@@ -12,10 +12,8 @@ def printall():
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly
-    print("lsdkfjasldfjalsdkfjaksdflasdkfjlskfj")
-    for fighter in results:
-        print(f"{fighter[1] :<30}{fighter[2]:<8}")
+    print(results)
     db.close()
 printall()
 
-# apparently there is no table "Languages" so I will need to do some trouble-shooting"
+# apparently there is no table "Languages" so I will need to do some trouble-shooting
