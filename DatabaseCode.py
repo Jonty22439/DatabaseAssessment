@@ -1,27 +1,43 @@
-"""This is the code that I will use to access the database information. Made by Jonty Uren"""
+"""This is a program that can be used to access data in my Languages database. Made by Jonty Uren"""
 # imports
 import sqlite3
 
 # variables
 DATABASE = "Languages.db"
 
-def printall():
+def printlang():
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
-    SQL = "SELECT * FROM Languages ORDER BY million_speakers ASC;"
+    SQL = "SELECT * FROM Languages ORDER BY million_speakers DESC;"
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly
+    print("LANGUAGE NAME          SPEAKERS      COUNTRIES THAT SPEAK IT     LANGUAGE FAMILY ")
     for result in results:
-        print(result)
+        print(f"{result[1] :<23}{result[2]:<14}{result[3]:<28}{result[4]:<11}")
     db.close()
+
+def printcountry():
+    db = sqlite3.connect(DATABASE)
+    cursor = db.cursor()
+    SQL = "SELECT * FROM Countries ORDER BY population_million DESC;"
+    cursor.execute(SQL)
+    results = cursor.fetchall()
+    # prints everything neatly
+    print("COUNTRY NAME          SPEAKERS      COUNTRIES THAT SPEAK IT     LANGUAGE FAMILY ") # Work in progress, not finished this part yet
+    for result in results:
+        print(f"{result[1] :<23}{result[2]:<14}{result[3]:<28}{result[4]:<11}")
+    db.close()
+
 
 while True:
     print("")
-    user_input = input("What would you like to do?\n1. print all languages in order of people who speak it\n2. close the program")
+    user_input = input("What would you like to do?\n1. print all languages in order of people who speak it\n2. close the program\n")
     if user_input == "1":
-        printall()
+        printlang()
     elif user_input == "2":
+        printcountry()
+    elif user_input == "3":
         break
     else:
-        print("Please input a number")
+        print("\nPlease input a valid number")
