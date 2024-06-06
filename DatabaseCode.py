@@ -24,15 +24,18 @@ def printcountry():
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly
-    print("COUNTRY NAME          SPEAKERS      COUNTRIES THAT SPEAK IT     LANGUAGE FAMILY ") # Work in progress, not finished this part yet
+    print("COUNTRY NAME           LANGUAGE      POPULATION")
     for result in results:
-        print(f"{result[1] :<23}{result[2]:<14}{result[3]:<28}{result[4]:<11}")
+        print(f"{result[1] :<23}{result[2]:<14}{result[3]:<28}")
     db.close()
 
 
 while True:
-    print("")
-    user_input = input("What would you like to do?\n1. print all languages in order of people who speak it\n2. close the program\n")
+    print("                 __              __   ___  ___     __        ____       ___      ___  ___   ")
+    print("|      /| |\  | /    |   |   /| /    |___  \_     |  \    /|   |    /| |__/   /| \_  |___   ")
+    print("|     /_| | \ | | __ |   |  /_| | __ |       \    |   |  /_|   |   /_| |  \  /_|   \ |      ")
+    print("|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   |  /  | |__/ /  | __/ |___   ")
+    user_input = input("What would you like to do?\n1. print all languages in order of people who speak it\n2. print all countries in the database \n3. close the program\n")
     if user_input == "1":
         printlang()
     elif user_input == "2":
