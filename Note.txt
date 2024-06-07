@@ -1,0 +1,1 @@
+Note: I need to learn how to do joins in SQL so that next lesson I can fix the "printcountry()" program to say the specific language and not just the ID. I will do this by watching the "Database relationship explain" video (https://www.youtube.com/watch?v=TsxzhptRz-w). Hopefully I will be ready by next week.
