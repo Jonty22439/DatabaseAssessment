@@ -10,7 +10,7 @@ DATABASE = "Languages.db"
 def printlang():
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
-    # SQL quere
+    # SQL query
     SQL = "SELECT * FROM Languages ORDER BY million_speakers DESC;"
     cursor.execute(SQL)
     results = cursor.fetchall()
@@ -24,12 +24,12 @@ def printlang():
 def printcountry():
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
-    # SQL quere
+    # SQL query
     SQL = "SELECT country_name, language_name, population_million FROM Countries INNER JOIN Languages ON Countries.language_id = Languages.language_id ORDER BY population_million DESC;"
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly 
-    print("COUNTRY NAME           LANGUAGE      POPULATION")
+    print("COUNTRY NAME           LANGUAGE          POPULATION")
     for result in results:
         print(f"{result[0] :<23}{result[1]:<18}{result[2]:<28}")
     db.close()
@@ -38,14 +38,14 @@ def printcountry():
 def printnationality():
     db = sqlite3.connect(DATABASE)
     cursor = db.cursor()
-    # SQL quere
-    SQL = "SELECT nationality_name, country_name FROM Nationalities INNER JOIN Countries ON Nationalities.country_id = Countries.country_id;"
+    # SQL query
+    SQL = "SELECT nationality_name, country_name, people_million FROM Nationalities INNER JOIN Countries ON Nationalities.country_id = Countries.country_id ORDER BY people_million DESC;"
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly 
-    print("NATIONALITY            COUNTRY")
+    print("NATIONALITY            COUNTRY          MILLION PEOPLE")
     for result in results:
-        print(f"{result[0] :<23}{result[1]:<14}")
+        print(f"{result[0] :<23}{result[1]:<17}{result[2]:<2}")
     db.close()
 
 # the main loop that recieves input and runs one of the programs depending on the input given by the user
@@ -53,8 +53,10 @@ print("                 __              __   ___  ___     __        _____      _
 print("|      /| |\  | /    |   |   /| /    |___  \_     |  \    /|   |    /| |__/   /| \_  |___   ")
 print("|     /_| | \ | | __ |   |  /_| | __ |       \    |   |  /_|   |   /_| |  \  /_|   \ |      ")
 print("|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   |  /  | |__/ /  | __/ |___   ")
+
+print("HOW TO USE:\nInput one of the numbers to print data")
 while True:
-    user_input = input("What would you like to do?\n1. print all languages in order of people who speak it\n2. print all countries in the database\n3. print all nationalities\n4. close the program\n")
+    user_input = input("\nWhat would you like to do?\n1. print all languages in order of people who speak it\n2. print all countries in the database\n3. print all nationalities in order of people\n4. close the program\n")
     if user_input == "1":
         printlang()
     elif user_input == "2":
