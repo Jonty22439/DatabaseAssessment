@@ -31,7 +31,7 @@ def printcountry():
     # prints everything neatly 
     print("COUNTRY NAME           LANGUAGE          POPULATION")
     for result in results:
-        print(f"{result[0] :<23}{result[1]:<18}{result[2]:<28}")
+        print(f"{result[0] :<23}{result[1]:<18}{result[2]}M")
     db.close()
 
 # prints all nationalities in the database
@@ -49,10 +49,10 @@ def printnationality():
     db.close()
 
 # the main loop that recieves input and runs one of the programs depending on the input given by the user
-print("                 __              __   ___  ___     __        _____      ___      ___  ___   ")
-print("|      /| |\  | /    |   |   /| /    |___  \_     |  \    /|   |    /| |__/   /| \_  |___   ")
-print("|     /_| | \ | | __ |   |  /_| | __ |       \    |   |  /_|   |   /_| |  \  /_|   \ |      ")
-print("|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   |  /  | |__/ /  | __/ |___   ")
+print("                 __              __   ___  ___     __        _____      ___      ___  ___")
+print("|      /| |\  | /    |   |   /| /    |___  \_     |  \    /|   |    /| |__/   /| \_  |___")
+print("|     /_| | \ | | __ |   |  /_| | __ |       \    |   |  /_|   |   /_| |  \  /_|   \ |   ")
+print("|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   |  /  | |__/ /  | __/ |___")
 
 print("HOW TO USE:\nInput one of the numbers to print data")
 while True:
