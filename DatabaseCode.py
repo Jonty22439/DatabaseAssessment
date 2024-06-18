@@ -15,11 +15,15 @@ def printlang():
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly
-    print("\033[31mLANGUAGE NAME          SPEAKERS      COUNTRIES THAT SPEAK IT     LANGUAGE FAMILY \033[0m")
+    print("\033[33mLANGUAGE NAME          SPEAKERS      COUNTRIES THAT SPEAK IT     LANGUAGE FAMILY \033[0m")
     for result in results:
         # this variable is to add the "m" at the end of the second result
         speakers = str(result[2]) + "m"
-        print(f"{result[1] :<23}{speakers:<14}{result[3]:<28}{result[4]:<11}")
+        print(f"\033[34m{result[1] :<23}\033[36m{speakers:<14}\033[34m{result[3]:<28}\033[36m{result[4]:<11}\033[0m")
+    while True:
+        close_confirm = input("\033[30mpress enter to open the menu\033[0m")
+        if close_confirm != 1:
+            break
     db.close()
 
 # prints all countries in order of population
@@ -31,9 +35,13 @@ def printcountry():
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly 
-    print("\033[31mCOUNTRY NAME           LANGUAGE          POPULATION\033[0m")
+    print("\033[33mCOUNTRY NAME           LANGUAGE          POPULATION\033[0m")
     for result in results:
-        print(f"{result[0] :<23}{result[1]:<18}{result[2]}m")
+        print(f"\033[34m{result[0] :<23}\033[36m{result[1]:<18}\033[34m{result[2]}m\033[0m")
+    while True:
+        close_confirm = input("\033[30mpress enter to open the menu\033[0m")
+        if close_confirm != 1:
+            break
     db.close()
 
 # prints all nationalities in the database
@@ -45,21 +53,24 @@ def printnationality():
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly 
-    print("\033[31mNATIONALITY            COUNTRY          MILLION PEOPLE\033[0m")
+    print("\033[33mNATIONALITY            COUNTRY          MILLION PEOPLE\033[0m")
     for result in results:
-        print(f"{result[0] :<23}{result[1]:<17}{result[2]}m")
+        print(f"\033[34m{result[0] :<23}\033[36m{result[1]:<17}\033[34m{result[2]}m\033[0m")
+    while True:
+        close_confirm = input("\033[30mpress enter to open the menu\033[0m")
+        if close_confirm != 1:
+            break
     db.close()
 
 # the main loop that recieves input and runs one of the programs depending on the input given by the user
-print("                 __              __   ___  ___     __        _____      ___      ___  ___")
+print("\033[32m                 __              __   ___  ___     __        _____      ___      ___  ___")
 print("|      /| |\  | /    |   |   /| /    |___  \_     |  \    /|   |    /| |__/   /| \_  |___")
 print("|     /_| | \ | | __ |   |  /_| | __ |       \    |   |  /_|   |   /_| |  \  /_|   \ |   ")
-print("|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   |  /  | |__/ /  | __/ |___")
+print("|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   |  /  | |__/ /  | __/ |___\033[0m")
 
-print("HOW TO USE:\nInput one of the numbers to print data")
-print("\033[31mRed text\033[0m")
+print("\033[32mHOW TO USE:   Input one of the numbers to do specific actions")
 while True:
-    user_input = input("\n\033[31mWhat would you like to do?\033[0m\n1. print all languages in order of people who speak it\n2. print all countries in the database\n3. print all nationalities in order of people\n4. close the program\n")
+    user_input = input("\n\033[33mWhat would you like to do?\033[34m\n1. print all languages in order of people who speak it\n\033[36m2. print all countries in the database\n\033[34m3. print all nationalities in order of people\n\033[36m4. close the program\n\033[0m")
     if user_input == "1":
         printlang()
     elif user_input == "2":
@@ -69,4 +80,4 @@ while True:
     elif user_input == "4":
         break
     else:
-        print("\nPlease input a valid number\n")
+        print("\033[31m\nPlease input a valid number\033[0m")
