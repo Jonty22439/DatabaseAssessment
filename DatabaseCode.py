@@ -1,4 +1,4 @@
-"""This is a program that can be used to access data in my Languages database. Made by Jonty Uren"""
+"""This is a program that can be used to access data in my Languages database. Made by Jonty Uren for an Assessment in Computer Science, BHS 2024."""
 # imports
 import sqlite3
 
@@ -20,6 +20,7 @@ def printlang():
         # this variable is to add the "m" at the end of the second result
         speakers = str(result[2]) + "m"
         print(f"\033[34m{result[1] :<23}\033[36m{speakers:<14}\033[34m{result[3]:<28}\033[36m{result[4]:<11}\033[0m")
+    # the following code is to make the printout stay on screen until you press enter
     while True:
         close_confirm = input("\033[30mpress enter to open the menu\033[0m")
         if close_confirm != 1:
@@ -38,6 +39,7 @@ def printcountry():
     print("\033[33mCOUNTRY NAME           LANGUAGE          POPULATION\033[0m")
     for result in results:
         print(f"\033[34m{result[0] :<23}\033[36m{result[1]:<18}\033[34m{result[2]}m\033[0m")
+        # the following code is to make the printout stay on screen until you press enter
     while True:
         close_confirm = input("\033[30mpress enter to open the menu\033[0m")
         if close_confirm != 1:
@@ -56,6 +58,7 @@ def printnationality():
     print("\033[33mNATIONALITY            COUNTRY          MILLION PEOPLE\033[0m")
     for result in results:
         print(f"\033[34m{result[0] :<23}\033[36m{result[1]:<17}\033[34m{result[2]}m\033[0m")
+    # the following code is to make the printout stay on screen until you press enter
     while True:
         close_confirm = input("\033[30mpress enter to open the menu\033[0m")
         if close_confirm != 1:
@@ -63,12 +66,12 @@ def printnationality():
     db.close()
 
 # the main loop that recieves input and runs one of the programs depending on the input given by the user
-print("\033[32m                 __              __   ___  ___     __        _____      ___      ___  ___")
-print("|      /| |\  | /    |   |   /| /    |___  \_     |  \    /|   |    /| |__/   /| \_  |___")
-print("|     /_| | \ | | __ |   |  /_| | __ |       \    |   |  /_|   |   /_| |  \  /_|   \ |   ")
-print("|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   |  /  | |__/ /  | __/ |___\033[0m")
+print("\033[33m                 __              __   ___  ___     __        _____      ___      ___  ___")
+print("\033[32m|      /| |\  | /    |   |   /| /    |___  \_     |  \    /|   |    /| |__/   /| \_  |___")
+print("\033[33m|     /_| | \ | | __ |   |  /_| | __ |       \    |   |  /_|   |   /_| |  \  /_|   \ |   ")
+print("\033[32m|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   |  /  | |__/ /  | __/ |___\033[0m")
 
-print("\033[32mHOW TO USE:   Input one of the numbers to do specific actions")
+print("\033[33mHOW TO USE:   Input one of the numbers to do specific actions")
 while True:
     user_input = input("\n\033[33mWhat would you like to do?\033[34m\n1. print all languages in order of people who speak it\n\033[36m2. print all countries in the database\n\033[34m3. print all nationalities in order of people\n\033[36m4. close the program\n\033[0m")
     if user_input == "1":
@@ -78,6 +81,10 @@ while True:
     elif user_input == "3":
         printnationality()
     elif user_input == "4":
-        break
+        # the following code is to make the program stay on screen until you press enter
+        print("\033[30mprogram closing now...\033[0m")
+        close_confirm = input("\033[30mpress enter to close the program\033[0m")
+        if close_confirm != 1:
+            break
     else:
         print("\033[31m\nPlease input a valid number\033[0m")
