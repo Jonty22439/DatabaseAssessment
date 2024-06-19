@@ -4,7 +4,13 @@ import sqlite3
 
 # variables
 DATABASE = "Languages.db"
-
+YELLOW = "\033[33m"
+GREEN = "\033[32m"
+BLUE = "\033[34m"
+CYAN = "\033[36m"
+GREY = "\033[30m"
+RED = "\033[31m"
+WHITE = "\033[0m"
 # funtions
 # prints all languages in order of how many people speak it
 def printlang():
@@ -15,14 +21,14 @@ def printlang():
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly
-    print("\033[33mLANGUAGE NAME          SPEAKERS      COUNTRIES THAT SPEAK IT     LANGUAGE FAMILY \033[0m")
+    print(f"{YELLOW}LANGUAGE NAME          SPEAKERS      COUNTRIES THAT SPEAK IT     LANGUAGE FAMILY {WHITE}")
     for result in results:
         # this variable is to add the "m" at the end of the second result
         speakers = str(result[2]) + "m"
-        print(f"\033[34m{result[1] :<23}\033[36m{speakers:<14}\033[34m{result[3]:<28}\033[36m{result[4]:<11}\033[0m")
+        print(f"{BLUE}{result[1] :<23}{CYAN}{speakers:<14}{BLUE}{result[3]:<28}{CYAN}{result[4]:<11}{WHITE}")
     # the following code is to make the printout stay on screen until you press enter
     while True:
-        close_confirm = input("\033[30mpress enter to open the menu\033[0m")
+        close_confirm = input(f"\n{GREY}press enter to open the menu{WHITE}")
         if close_confirm != 1:
             break
     db.close()
@@ -36,12 +42,12 @@ def printcountry():
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly 
-    print("\033[33mCOUNTRY NAME           LANGUAGE          POPULATION\033[0m")
+    print(f"{YELLOW}COUNTRY NAME           LANGUAGE          POPULATION{WHITE}")
     for result in results:
-        print(f"\033[34m{result[0] :<23}\033[36m{result[1]:<18}\033[34m{result[2]}m\033[0m")
+        print(f"{BLUE}{result[0] :<23}{CYAN}{result[1]:<18}{BLUE}{result[2]}m{WHITE}")
         # the following code is to make the printout stay on screen until you press enter
     while True:
-        close_confirm = input("\033[30mpress enter to open the menu\033[0m")
+        close_confirm = input(f"\n{GREY}press enter to open the menu{WHITE}")
         if close_confirm != 1:
             break
     db.close()
@@ -55,25 +61,44 @@ def printnationality():
     cursor.execute(SQL)
     results = cursor.fetchall()
     # prints everything neatly 
-    print("\033[33mNATIONALITY            COUNTRY          MILLION PEOPLE\033[0m")
+    print(f"{YELLOW}NATIONALITY            COUNTRY          MILLION PEOPLE{WHITE}")
     for result in results:
-        print(f"\033[34m{result[0] :<23}\033[36m{result[1]:<17}\033[34m{result[2]}m\033[0m")
+        print(f"{BLUE}{result[0] :<23}{CYAN}{result[1]:<17}{BLUE}{result[2]}m{WHITE}")
     # the following code is to make the printout stay on screen until you press enter
     while True:
-        close_confirm = input("\033[30mpress enter to open the menu\033[0m")
+        close_confirm = input(f"\n{GREY}press enter to open the menu{WHITE}")
         if close_confirm != 1:
             break
     db.close()
 
-# the main loop that recieves input and runs one of the programs depending on the input given by the user
-print("\033[33m                 __              __   ___  ___     __        _____      ___      ___  ___")
-print("\033[32m|      /| |\  | /    |   |   /| /    |___  \_     |  \    /|   |    /| |__/   /| \_  |___")
-print("\033[33m|     /_| | \ | | __ |   |  /_| | __ |       \    |   |  /_|   |   /_| |  \  /_|   \ |   ")
-print("\033[32m|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   |  /  | |__/ /  | __/ |___\033[0m")
-
-print("\033[33mHOW TO USE:   Input one of the numbers to do specific actions")
+# signing in process
 while True:
-    user_input = input("\n\033[33mWhat would you like to do?\033[34m\n1. print all languages in order of people who speak it\n\033[36m2. print all countries in the database\n\033[34m3. print all nationalities in order of people\n\033[36m4. close the program\n\033[0m")
+    colour = input("Would you like to have colour enabled? (y/n)")
+    colour = colour.lower()
+    if colour == "y" or "n":
+        break
+    else:
+        print("ERROR: please only input 'y' or 'n'")
+if colour == "y":
+    print(f"{YELLOW}Colour has been turned on!")
+else:
+    print("Colour has been turned off")
+    YELLOW = ""
+    GREEN = ""
+    BLUE = ""
+    CYAN = ""
+    GREY = ""
+    RED = ""
+    WHITE = ""
+# the main loop that recieves input and runs one of the programs depending on the input given by the user
+print(f"{YELLOW}                 __              __   ___  ___     __        _____      ___      ___  ___")
+print(f"{GREEN}|      /| |\  | /    |   |   /| /    |___  \_     |  \    /|   |    /| |__/   /| \_  |___")
+print(f"{YELLOW}|     /_| | \ | | __ |   |  /_| | __ |       \    |   |  /_|   |   /_| |  \  /_|   \ |   ")
+print(f"{GREEN}|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   |  /  | |__/ /  | __/ |___{WHITE}")
+
+print(f"{YELLOW}HOW TO USE:   Input one of the numbers to do specific actions")
+while True:
+    user_input = input(f"\n{YELLOW}What would you like to do?{BLUE}\n1. print all languages in order of people who speak it\n{CYAN}2. print all countries in the database\n{BLUE}3. print all nationalities in order of people\n{CYAN}4. close the program\n{WHITE}")
     if user_input == "1":
         printlang()
     elif user_input == "2":
@@ -82,9 +107,9 @@ while True:
         printnationality()
     elif user_input == "4":
         # the following code is to make the program stay on screen until you press enter
-        print("\033[30mprogram closing now...\033[0m")
-        close_confirm = input("\033[30mpress enter to close the program\033[0m")
+        print(f"{GREY}program closing now...{WHITE}")
+        close_confirm = input(f"{GREY}press enter to close the program{WHITE}")
         if close_confirm != 1:
             break
     else:
-        print("\033[31m\nPlease input a valid number\033[0m")
+        print(f"{RED}\nPlease input a valid number{WHITE}")
