@@ -71,6 +71,55 @@ def printnationality():
             break
     db.close()
 
+# quiz game
+def quiz():
+    points = 0
+    print(f"{YELLOW}Welcome to the quiz!")
+    print(f"How to play: ")
+    print(f"{BLUE}read the questions")
+    print(f"{CYAN}enter one of the given numbers to answer the question")
+    print(f"{BLUE}all answers can be found in this program by accessing the database!")
+    input(f"{GREY}press enter to continue")
+    # Question 1
+    question = input(f"\n{YELLOW}Question 1: what is the most spoken language?\n{BLUE}1. English\n{CYAN}2. Mandarin Chinese\n{BLUE}3. Hindi\n{GREY}Enter your answer:{WHITE} ")
+    if question == "2":
+        print(f"{GREEN}Correct! +1 point!")
+        points = points + 1
+    else:
+        print(f"{RED}Incorrect. The correct answer was: {BLUE} 2. Mandarin Chinese")
+    # Question 2
+    question = input(f"\n{YELLOW}Question 2: what is the most populated country?\n{BLUE}1. India\n{CYAN}2. China\n{BLUE}3. USA\n{GREY}Enter your answer:{WHITE} ")
+    if question == "2":
+        print(f"{GREEN}Correct! +1 point!")
+        points = points + 1
+    else:
+        print(f"{RED}Incorrect. The correct answer was: {BLUE} 2. China")
+    # Question 3
+    question = input(f"\n{YELLOW}Question 3: what nationality has the most people?\n{BLUE}1. Indian\n{CYAN}2. Pakistani\n{BLUE}3. Indian\n{GREY}Enter your answer:{WHITE} ")
+    if question == "1":
+        print(f"{GREEN}Correct! +1 point!")
+        points = points + 1
+    else:
+        print(f"{RED}Incorrect. The correct answer was: {BLUE} 1. Indian")
+    # Question 4
+    question = input(f"\n{YELLOW}Question 4: what language is spoken in the most countries?\n{BLUE}1. Spanish\n{CYAN}2. French\n{BLUE}3. English\n{GREY}Enter your answer:{WHITE} ")
+    if question == "3":
+        print(f"{GREEN}Correct! +1 point!")
+        points = points + 1
+    else:
+        print(f"{RED}Incorrect. The correct answer was: {BLUE} 3. English")
+    # Question 5
+    question = input(f"\n{YELLOW}Question 5: which one of these languages is from the Afro-Asiantic family?\n{BLUE}1. Arabic\n{CYAN}2. Portugese\n{BLUE}3. Urdu\n{GREY}Enter your answer:{WHITE} ")
+    if question == "1":
+        print(f"{GREEN}Correct! +1 point!")
+        points = points + 1
+    else:
+        print(f"{RED}Incorrect. The correct answer was: {BLUE} 1. Arabic")
+
+    print(f"{YELLOW}Thanks for playing! Total score: {GREEN}{points}/5{WHITE}")
+    input(f"{GREY}press enter to continue to the main menu")
+
+
 # signing in process
 while True:
     colour = input("Would you like to have colour enabled? (y/n)")
@@ -98,7 +147,7 @@ print(f"{GREEN}|___ /  | |  \| \__| \__/  /  | \__| |___  __/    |__/  /  |   | 
 
 print(f"{YELLOW}HOW TO USE:   Input one of the numbers to do specific actions")
 while True:
-    user_input = input(f"\n{YELLOW}What would you like to do?{BLUE}\n1. print all languages in order of people who speak it\n{CYAN}2. print all countries in the database\n{BLUE}3. print all nationalities in order of people\n{CYAN}4. close the program\n{WHITE}")
+    user_input = input(f"\n{YELLOW}What would you like to do?{BLUE}\n1. print all languages in order of people who speak it\n{CYAN}2. print all countries in the database\n{BLUE}3. print all nationalities in order of people\n{CYAN}4. play the quiz\n{BLUE}5. close the program{WHITE}")
     if user_input == "1":
         printlang()
     elif user_input == "2":
@@ -106,6 +155,8 @@ while True:
     elif user_input == "3":
         printnationality()
     elif user_input == "4":
+        quiz()
+    elif user_input == "5":
         # the following code is to make the program stay on screen until you press enter
         print(f"{GREY}program closing now...{WHITE}")
         close_confirm = input(f"{GREY}press enter to close the program{WHITE}")
